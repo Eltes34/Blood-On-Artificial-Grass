@@ -26,18 +26,22 @@
             justify-content: center;
             text-align: center;
             padding: 20px;
-            background: #1a0000;
+            /* ФОН С ВАШЕЙ КАРТИНКОЙ */
+            background: 
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+                url('IMG_20251105_234735_737.png') center/cover;
         }
         .hero-content h1 {
             font-size: 2.5rem;
             color: #ff0000;
             margin-bottom: 1rem;
-            text-shadow: 0 0 10px #ff0000;
+            text-shadow: 0 0 10px #ff0000, 2px 2px 0px #000;
         }
         .hero-content p {
             font-size: 1.2rem;
-            color: #cc6666;
+            color: #ffffff;
             margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px #000;
         }
         .cta-button {
             display: inline-block;
@@ -50,6 +54,11 @@
             margin: 10px;
             border: none;
             font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
         }
         .section {
             padding: 50px 20px;
@@ -60,6 +69,21 @@
         h2 {
             color: #ff4444;
             margin-bottom: 1rem;
+            text-shadow: 0 0 5px #ff0000;
+        }
+        .book-cover {
+            max-width: 300px;
+            width: 100%;
+            margin: 20px auto;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 20px #ff0000;
+            display: block;
+            border-radius: 5px;
+        }
+        .content-text {
+            color: #cc6666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -74,11 +98,16 @@
     </section>
     
     <div class="section">
+        <!-- ВАША ОБЛОЖКА -->
+        <img src="IMG_20251105_234735_737.png" 
+             alt="Обложка книги Кровь на искусственной траве" 
+             class="book-cover">
+        
         <h2>Тайна начинается здесь</h2>
-        <p>Цзян Му просыпается в мире, где тени шепчут, а время застыло навсегда. Каждый шаг может стать последним.</p>
+        <p class="content-text">Цзян Му просыпается в мире, где тени шепчут, а время застыло навсегда. Каждый шаг может стать последним. Каждый выбор ведёт в неизвестность...</p>
         
         <h2>Присоединиться к тайне</h2>
-        <p>Только смелые узнают правду. Только сильные дойдут до конца.</p>
+        <p class="content-text">Только смелые узнают правду. Только сильные дойдут до конца. Готовы ли вы принять вызов?</p>
         
         <a href="https://t.me/bloodoag" class="cta-button">📖 Читать в Telegram</a>
     </div>
