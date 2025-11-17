@@ -142,6 +142,27 @@
         .close-chapter:hover {
             background: #550000;
         }
+        
+        /* Новые кнопки */
+        .author-button {
+            background: #ff4444 !important;
+            border: 2px solid #ff0000;
+        }
+        .author-button:hover {
+            background: #ff0000 !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Сообщение об ошибке */
+        .error-message {
+            display: none;
+            background: #330000;
+            color: #ff6666;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -149,15 +170,22 @@
         <div class="hero-content">
             <h1>КРОВЬ НА ИСКУССТВЕННОЙ ТРАВЕ</h1>
             <p>Время остановилось. Город пуст. Смертельные Игры начинаются...</p>
+            
             <button onclick="showChapter()" class="cta-button">🩸 Читать первую главу</button>
-            <a href="https://t.me/+lFIr88oBzQg1Mjdi" class="cta-button" aria-label="Узнать тайну книги">💀 Узнать тайну</a>
+            <a href="https://t.me/bloodoag" class="cta-button" target="_blank">💀 Узнать тайну</a>
+            <a href="https://author.today/work/513204" class="cta-button author-button" target="_blank">📚 Читать на Author.Today</a>
+            
+            <div id="linkError" class="error-message">
+                Ссылка не работает? Попробуйте: https://t.me/bloodoag
+            </div>
         </div>
     </section>
     
     <div class="section">
         <img src="IMG_20251105_234735_737.png" 
              alt="Обложка книги Кровь на искусственной траве" 
-             class="book-cover">
+             class="book-cover"
+             onerror="this.style.display='none'">
         
         <h2>О книге "Кровь на искусственной траве"</h2>
         <p class="content-text">Цзян Му просыпается в мире, где время остановилось. Телефоны мертвы, город пуст. Её ждут смертельные игры с единственным правилом: выжить любой ценой. Антиутопия, триллер, фантастика.</p>
@@ -187,28 +215,35 @@
                 
                 <p>... и открыла глаза в своей комнате. Сердце колотилось где-то в горле. Знакомые обои, потрескавшийся потолок, запах пыли.</p>
                 
-                <p>— Даже сны надо мной издеваются, — прохрипела она, с силой ударив кулаком по матрасу.</p>
-                
-                <!-- Можно добавить ещё отрывок для заинтересованности -->
+                <p>— Да даже сны надо мной издеваются, — прохрипела она, с силой ударив кулаком по матрасу.</p>
             </div>
             <div class="continue-reading">
                 <h3>Понравилось начало?</h3>
-                <p>Читайте продолжение в Telegram-канале!</p>
-                <a href="https://t.me/+lFIr88oBzQg1Mjdi" class="cta-button">📖 Продолжить чтение в Telegram</a>
+                <p>Читайте продолжение!</p>
+                <a href="https://author.today/work/513204" class="cta-button author-button" target="_blank">📖 Читать на Author.Today</a>
+                <a href="https://t.me/bloodoag" class="cta-button" target="_blank">👥 Telegram канал</a>
             </div>
         </div>
         
-        <h2>Читать онлайн бесплатно</h2>
-        <p class="content-text">Начните чтение с первой главы прямо на сайте, затем продолжите в Telegram-канале!</p>
+        <h2>Где читать?</h2>
+        <p class="content-text">Выберите удобную платформу для чтения:</p>
         
-        <button onclick="showChapter()" class="cta-button">📖 Начать чтение</button>
-        <a href="https://t.me/+lFIr88oBzQg1Mjdi" class="cta-button" aria-label="Присоединиться к Telegram каналу">👥 Присоединиться</a>
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://author.today/work/513204" class="cta-button author-button" target="_blank" style="display: block; margin: 15px auto; max-width: 300px;">
+                📚 Читать на Author.Today
+            </a>
+            <a href="https://t.me/bloodoag" class="cta-button" target="_blank" style="display: block; margin: 15px auto; max-width: 300px;">
+                📖 Telegram канал
+            </a>
+            <button onclick="showChapter()" class="cta-button" style="display: block; margin: 15px auto; max-width: 300px;">
+                🩸 Прочитать первую главу
+            </button>
+        </div>
     </div>
 
     <script>
         function showChapter() {
             document.getElementById('chapterPreview').style.display = 'block';
-            // Плавная прокрутка к главе
             document.getElementById('chapterPreview').scrollIntoView({ 
                 behavior: 'smooth' 
             });
@@ -218,6 +253,19 @@
             document.getElementById('chapterPreview').style.display = 'none';
         }
         
+        // Проверка ссылок
+        function checkLinks() {
+            fetch('https://t.me/bloodoag')
+                .then(response => {
+                    if (!response.ok) {
+                        document.getElementById('linkError').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('linkError').style.display = 'block';
+                });
+        }
+        
         // Закрытие по клику вне области главы
         document.addEventListener('click', function(event) {
             const chapter = document.getElementById('chapterPreview');
@@ -225,6 +273,9 @@
                 hideChapter();
             }
         });
+        
+        // Проверяем ссылки при загрузке
+        window.addEventListener('load', checkLinks);
     </script>
 </body>
 </html>
