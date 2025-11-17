@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -152,17 +152,6 @@
             background: #ff0000 !important;
             transform: translateY(-2px);
         }
-        
-        /* Сообщение об ошибке */
-        .error-message {
-            display: none;
-            background: #330000;
-            color: #ff6666;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -172,12 +161,8 @@
             <p>Время остановилось. Город пуст. Смертельные Игры начинаются...</p>
             
             <button onclick="showChapter()" class="cta-button">🩸 Читать первую главу</button>
-            <a href="https://t.me/bloodoag" class="cta-button" target="_blank">💀 Узнать тайну</a>
+            <a href="https://t.me/+lFIr88oBzQg1Mjdi" class="cta-button" target="_blank">💀 Узнать тайну</a>
             <a href="https://author.today/work/513204" class="cta-button author-button" target="_blank">📚 Читать на Author.Today</a>
-            
-            <div id="linkError" class="error-message">
-                Ссылка не работает? Попробуйте: https://t.me/bloodoag
-            </div>
         </div>
     </section>
     
@@ -221,7 +206,7 @@
                 <h3>Понравилось начало?</h3>
                 <p>Читайте продолжение!</p>
                 <a href="https://author.today/work/513204" class="cta-button author-button" target="_blank">📖 Читать на Author.Today</a>
-                <a href="https://t.me/bloodoag" class="cta-button" target="_blank">👥 Telegram канал</a>
+                <a href="https://t.me/+lFIr88oBzQg1Mjdi" class="cta-button" target="_blank">👥 Telegram канал</a>
             </div>
         </div>
         
@@ -232,7 +217,7 @@
             <a href="https://author.today/work/513204" class="cta-button author-button" target="_blank" style="display: block; margin: 15px auto; max-width: 300px;">
                 📚 Читать на Author.Today
             </a>
-            <a href="https://t.me/bloodoag" class="cta-button" target="_blank" style="display: block; margin: 15px auto; max-width: 300px;">
+            <a href="https://t.me/+lFIr88oBzQg1Mjdi" class="cta-button" target="_blank" style="display: block; margin: 15px auto; max-width: 300px;">
                 📖 Telegram канал
             </a>
             <button onclick="showChapter()" class="cta-button" style="display: block; margin: 15px auto; max-width: 300px;">
@@ -253,19 +238,6 @@
             document.getElementById('chapterPreview').style.display = 'none';
         }
         
-        // Проверка ссылок
-        function checkLinks() {
-            fetch('https://t.me/bloodoag')
-                .then(response => {
-                    if (!response.ok) {
-                        document.getElementById('linkError').style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    document.getElementById('linkError').style.display = 'block';
-                });
-        }
-        
         // Закрытие по клику вне области главы
         document.addEventListener('click', function(event) {
             const chapter = document.getElementById('chapterPreview');
@@ -273,9 +245,6 @@
                 hideChapter();
             }
         });
-        
-        // Проверяем ссылки при загрузке
-        window.addEventListener('load', checkLinks);
     </script>
 </body>
 </html>
